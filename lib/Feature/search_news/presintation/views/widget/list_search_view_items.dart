@@ -19,11 +19,14 @@ class ListItemsSearch extends StatelessWidget {
         }
         if (state is SearchNewsSuccess) {
           return SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => CustomItemsNewsSearch(
-                article: state.listnewsModels[0].articles![index],
-              ),
-            ),
+            delegate: SliverChildBuilderDelegate((context, index) {
+              if (state.listnewsModels[0].articles!.isNotEmpty) {
+                return CustomItemsNewsSearch(
+                  article: state.listnewsModels[0].articles![index],
+                );
+              }
+              return null;
+            }),
           );
         } else if (state is SearchNewsFaliure) {
           return SliverToBoxAdapter(
