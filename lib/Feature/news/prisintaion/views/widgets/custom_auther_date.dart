@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled4/core/utils/app_color.dart';
+import 'package:untitled4/core/widgets/custom_formate_date.dart';
 
 class CustomAutherAndDatePost extends StatelessWidget {
   const CustomAutherAndDatePost(
@@ -23,8 +24,7 @@ class CustomAutherAndDatePost extends StatelessWidget {
                 )),
           ),
           Text(
-            // getDate(date),
-            date,
+            getDate(date),
             style: const TextStyle(
               color: Appcolor.kpirmaryAuther,
               fontSize: 15,

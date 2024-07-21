@@ -12,13 +12,17 @@ class ListItemsSearch extends StatelessWidget {
       builder: (context, state) {
         if (state is SearchNewsLoading) {
           return const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator()),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         }
         if (state is SearchNewsSuccess) {
           return SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) => CustomItemsNewsSearch(),
+              (context, index) => CustomItemsNewsSearch(
+                article: state.listnewsModels[0].articles![index],
+              ),
             ),
           );
         } else if (state is SearchNewsFaliure) {
