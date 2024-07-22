@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled4/Feature/news/data/models/news_models/news_models.dart';
-import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_items_news_topheadlines.dart';
+import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_items_top_news.dart';
 
 class SlidingAnimation extends StatelessWidget {
   const SlidingAnimation({
@@ -28,7 +28,7 @@ class SlidingAnimation extends StatelessWidget {
           child: child,
         );
       },
-      child: CustomItemsNewsTopHeadlines(
+      child: CustomItemsTopNews(
         listnewsModel: listnewsmodels,
         index: index,
       ),

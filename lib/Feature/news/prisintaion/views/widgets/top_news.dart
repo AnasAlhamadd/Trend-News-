@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/Feature/news/prisintaion/manager/top_news_cubit/top_news_cubit.dart';
+import 'package:untitled4/Feature/news/prisintaion/views/widgets/animate_slider_headlines.dart';
 import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_dot_indicator.dart';
 import 'package:untitled4/Feature/news/prisintaion/views/widgets/sliding_animation.dart';
 
@@ -14,8 +15,8 @@ class _TopHeadLinesNewsViewState extends State<TopNews> {
   @override
   void initState() {
     // animateSlider(
-    //   BlocProvider.of<TopHeadlinesCubit>(context).pageController,
-    //   BlocProvider.of<TopHeadlinesCubit>(context).listTopHeadLines,
+    //   pageController: BlocProvider.of<TopNewsCubit>(context).pageController,
+    //   listnewsModels: BlocProvider.of<TopNewsCubit>(context).listTopHeadLines,
     // );
     super.initState();
   }

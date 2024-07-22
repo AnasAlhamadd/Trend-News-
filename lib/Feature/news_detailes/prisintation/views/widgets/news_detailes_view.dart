@@ -20,8 +20,7 @@ class _NewsDetailesBodyViewState extends State<NewsDetailesBodyView> {
   ScrollController scrollController = ScrollController();
   //!Animated AppBar
   bool isAppBarActive = false;
-  @override
-  void initState() {
+  void _scrollListener() {
     scrollController.addListener(() {
       if (scrollController.offset > MediaQuery.of(context).size.height * 0.5) {
         setState(() {
@@ -33,7 +32,19 @@ class _NewsDetailesBodyViewState extends State<NewsDetailesBodyView> {
         });
       }
     });
+  }
+
+  @override
+  void initState() {
+    _scrollListener();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.removeListener(_scrollListener);
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override

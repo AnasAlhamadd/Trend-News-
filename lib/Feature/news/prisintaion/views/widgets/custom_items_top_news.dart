@@ -5,8 +5,8 @@ import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_source_n
 import 'package:untitled4/core/utils/app_styles.dart';
 import 'package:untitled4/core/utils/constant.dart';
 
-class CustomItemsNewsTopHeadlines extends StatelessWidget {
-  const CustomItemsNewsTopHeadlines(
+class CustomItemsTopNews extends StatelessWidget {
+  const CustomItemsTopNews(
       {super.key, required this.listnewsModel, required this.index});
   final List<NewsModels> listnewsModel;
   final int index;

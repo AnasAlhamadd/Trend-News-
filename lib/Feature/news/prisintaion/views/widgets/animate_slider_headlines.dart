@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:untitled4/Feature/news/data/models/news_models/news_models.dart';
 
 void animateSlider(
-    PageController pageController, List<NewsModels> listnewsModels) {
+    {required PageController pageController,
+    required List<NewsModels> listnewsModels}) {
   Future.delayed(const Duration(seconds: 5)).then(
     (_) {
       int nextPage = pageController.page!.round() + 1;
@@ -18,8 +19,9 @@ void animateSlider(
             duration: const Duration(seconds: 2),
             curve: Curves.linear,
           )
-          .then((_) =>
-              animateSlider(pageController, listnewsModels)); // recursion
+          .then((_) => animateSlider(
+              pageController: pageController,
+              listnewsModels: listnewsModels)); // recursion
     },
   );
 }
