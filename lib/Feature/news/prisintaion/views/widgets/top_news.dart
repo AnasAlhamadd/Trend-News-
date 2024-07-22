@@ -14,8 +14,8 @@ class _TopHeadLinesNewsViewState extends State<TopNews> {
   @override
   void initState() {
     // animateSlider(
-    //   BlocProvider.of<TopHeadlinesCubit>(context).pageController,
-    //   BlocProvider.of<TopHeadlinesCubit>(context).listTopHeadLines,
+    //   pageController: BlocProvider.of<TopNewsCubit>(context).pageController,
+    //   listnewsModels: BlocProvider.of<TopNewsCubit>(context).listTopHeadLines,
     // );
     super.initState();
   }
