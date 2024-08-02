@@ -20,6 +20,8 @@ class _NewsBodyState extends State<NewsBody> {
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           items: bottomNavigationBarItems,
+          unselectedItemColor: Colors.grey[600],
+          selectedItemColor: Appcolor.kRadiusColor,
           selectedIconTheme: const IconThemeData(
             color: Appcolor.kRadiusColor,
           ),
@@ -31,12 +33,20 @@ class _NewsBodyState extends State<NewsBody> {
           selectedLabelStyle: AppTextStyles.style15.copyWith(
             fontFamily: kFontFamilyRobotoSlab,
           ),
-          unselectedLabelStyle: AppTextStyles.style15.copyWith(
-            fontFamily: kFontFamilyRobotoSlab,
-          ),
-          elevation: 100,
           selectedFontSize: 15.0,
         ),
         body: listwidget[curentindex]);
   }
 }
+
+// import 'package:flutter/material.dart';
+// import 'package:untitled4/core/widgets/custom_loadin_explore_shimmer.dart';
+
+// class NewsBody extends StatelessWidget {
+//   const NewsBody({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Scaffold(body: const CustomLoadinExploreShimmer());
+//   }
+// }

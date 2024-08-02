@@ -11,6 +11,10 @@ List<BottomNavigationBarItem> bottomNavigationBarItems = [
     label: 'discover',
   ),
   const BottomNavigationBarItem(
+    label: 'Saved',
+    icon: Icon(FontAwesomeIcons.bookmark),
+  ),
+  const BottomNavigationBarItem(
     label: 'Profile',
     icon: Icon(FontAwesomeIcons.user),
   ),

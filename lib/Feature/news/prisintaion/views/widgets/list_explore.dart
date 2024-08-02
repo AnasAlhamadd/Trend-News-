@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:untitled4/Feature/news/prisintaion/manager/explore_cubit/explore_cubit.dart';
 import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_items_news_explore.dart';
 import 'package:untitled4/core/utils/app_router.dart';
+import 'package:untitled4/core/widgets/custom_loadin_explore_shimmer.dart';
 
 class ListExplore extends StatelessWidget {
   const ListExplore({super.key});
@@ -38,10 +39,9 @@ class ListExplore extends StatelessWidget {
             ),
           );
         } else {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
+          return SliverList.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) => const CustomLoadinExploreShimmer(),
           );
         }
       },
