@@ -38,6 +38,14 @@ class CustomLoadinItemsNewsShimmer extends StatelessWidget {
                     : MediaQuery.of(context).size.width * .5,
               ),
               const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 30.0,
+                color: Colors.white,
+                width: MediaQuery.of(context).size.width * .6,
+              ),
+              const SizedBox(
                 height: 20.0,
               ),
               Container(
