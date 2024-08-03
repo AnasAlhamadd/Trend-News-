@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/Feature/discover/prisintation/manager/categores_cubit/category_cubit.dart';
 import 'package:untitled4/Feature/discover/prisintation/views/widgets/custom_items_discover.dart';
+import 'package:untitled4/core/widgets/custom_loading_explore_shimmer.dart';
 
 class CustomListDiscover extends StatelessWidget {
   const CustomListDiscover({super.key});
@@ -25,13 +26,10 @@ class CustomListDiscover extends StatelessWidget {
                 );
               });
         } else {
-          return const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(top: 250.0),
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            ),
+          return SliverList.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) =>
+                const CustomLoadinItemsNewsShimmer(isExploreOrNot: false),
           );
         }
       },

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class CustomLoadinExploreShimmer extends StatelessWidget {
-  const CustomLoadinExploreShimmer({
+class CustomLoadinItemsNewsShimmer extends StatelessWidget {
+  const CustomLoadinItemsNewsShimmer({
     super.key,
+    required this.isExploreOrNot,
   });
+  final bool isExploreOrNot;
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
@@ -16,6 +18,7 @@ class CustomLoadinExploreShimmer extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Container(
+              padding: const EdgeInsets.only(bottom: 10.0),
               width: 100.0,
               height: 100.0,
               color: Colors.white,
@@ -28,22 +31,19 @@ class CustomLoadinExploreShimmer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                color: Colors.white,
-                child: const Text('data data data data data'),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
                 height: 30.0,
                 color: Colors.white,
-                child: const Text('datadatadatadatadata'),
+                width: isExploreOrNot
+                    ? MediaQuery.of(context).size.width * .6
+                    : MediaQuery.of(context).size.width * .5,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Container(
-                width: MediaQuery.of(context).size.width * .5,
+                width: isExploreOrNot
+                    ? MediaQuery.of(context).size.width * .5
+                    : MediaQuery.of(context).size.width * .4,
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -52,10 +52,10 @@ class CustomLoadinExploreShimmer extends StatelessWidget {
                   ),
                   color: Colors.white,
                 ),
-                child: Text('data data'),
+                child: const Text('Test Test'),
               ),
               const SizedBox(
-                height: 5.0,
+                height: 20.0,
               ),
             ],
           )
