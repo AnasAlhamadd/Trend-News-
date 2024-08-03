@@ -29,7 +29,7 @@ class CustomLoadinExploreShimmer extends StatelessWidget {
             children: [
               Container(
                 color: Colors.white,
-                child: const Text('data data data data data'),
+                width: MediaQuery.of(context).size.width * .5,
               ),
               const SizedBox(
                 height: 20,
@@ -37,9 +37,9 @@ class CustomLoadinExploreShimmer extends StatelessWidget {
               Container(
                 height: 30.0,
                 color: Colors.white,
-                child: const Text('datadatadatadatadata'),
+                width: MediaQuery.of(context).size.width * .6,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20.0,
               ),
               Container(
@@ -52,10 +52,10 @@ class CustomLoadinExploreShimmer extends StatelessWidget {
                   ),
                   color: Colors.white,
                 ),
-                child: Text('data data'),
+                child: const Text('Test Test'),
               ),
               const SizedBox(
-                height: 5.0,
+                height: 20.0,
               ),
             ],
           )
