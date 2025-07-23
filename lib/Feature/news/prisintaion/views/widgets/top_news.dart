@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/Feature/news/prisintaion/manager/top_news_cubit/top_news_cubit.dart';
+import 'package:untitled4/Feature/news/prisintaion/views/widgets/animate_slider_headlines.dart';
 import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_dot_indicator.dart';
 import 'package:untitled4/Feature/news/prisintaion/views/widgets/sliding_animation.dart';
 import 'package:untitled4/core/widgets/custom_loading_top_news.dart';
@@ -14,10 +15,10 @@ class TopNews extends StatefulWidget {
 class _TopHeadLinesNewsViewState extends State<TopNews> {
   @override
   void initState() {
-    // animateSlider(
-    //   pageController: BlocProvider.of<TopNewsCubit>(context).pageController,
-    //   listnewsModels: BlocProvider.of<TopNewsCubit>(context).listTopHeadLines,
-    // );
+    animateSlider(
+      pageController: BlocProvider.of<TopNewsCubit>(context).pageController,
+      listnewsModels: BlocProvider.of<TopNewsCubit>(context).listTopHeadLines,
+    );
     super.initState();
   }
 
@@ -42,8 +43,7 @@ class _TopHeadLinesNewsViewState extends State<TopNews> {
                   height: MediaQuery.of(context).size.height * 0.26,
                   child: PageView.builder(
                       onPageChanged: (int index) {
-                        BlocProvider.of<TopNewsCubit>(context).currntPage =
-                            index;
+                        cubit.currntPage = index;
                         setState(() {});
                       },
                       physics: const BouncingScrollPhysics(),

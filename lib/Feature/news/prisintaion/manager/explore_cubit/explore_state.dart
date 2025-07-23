@@ -12,9 +12,10 @@ final class ExploreInitial extends ExploreState {}
 final class ExploreLoading extends ExploreState {}
 
 final class ExploreSuccess extends ExploreState {
-  final List<NewsModels> listnewsModels;
+  final List<NewsModels> listNewsData;
+  final bool isLoadingMore;
 
-  const ExploreSuccess(this.listnewsModels);
+  const ExploreSuccess(this.listNewsData, {this.isLoadingMore = false});
 }
 
 final class ExploreFailure extends ExploreState {

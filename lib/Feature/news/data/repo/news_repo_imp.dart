@@ -37,24 +37,24 @@ class NewsRepoImp extends NewsRepo {
   }
 
   @override
-  Future<Either<Faliure, List<NewsModels>>> featchExploreNews() async {
+  Future<Either<Faliure, List<NewsModels>>> featchExploreNews({
+    required int page,
+    required int pageSize,
+  }) async {
     try {
-      Map<String, dynamic> data = await apiServices.get(
-          // 'everything?domains=aljazeera.com&apiKey=$key',
-          'everything?domains=techcrunch.com,aljazeera.com,bbc.co.uk&apiKey=$key');
-
+      final response = await apiServices.get(
+        'everything?domains=techcrunch.com,aljazeera.com,bbc.co.uk&page=$page&pageSize=$pageSize&apiKey=$key',
+      );
       List<NewsModels> listNews = [];
       listNews.add(
-        NewsModels.fromJson(data),
+        NewsModels.fromJson(response),
       );
       return right(listNews);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFaliure.fromDioError(e));
       } else {
-        return left(
-          ServerFaliure('Oops Please Try Agin'),
-        );
+        return left(ServerFaliure('Oops, please try again.'));
       }
     }
   }

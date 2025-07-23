@@ -12,7 +12,6 @@ void animateSlider(
       if (nextPage == listnewsModels.length || nextPage >= 10) {
         nextPage = 0;
       }
-
       pageController
           .animateToPage(
             nextPage,

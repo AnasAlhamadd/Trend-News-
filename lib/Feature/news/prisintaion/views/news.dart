@@ -38,15 +38,3 @@ class _NewsBodyState extends State<NewsBody> {
         body: listwidget[curentindex]);
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:untitled4/core/widgets/custom_loading_explore_shimmer.dart';
-
-// class NewsBody extends StatelessWidget {
-//   const NewsBody({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(body: CustomLoadinExploreShimmer());
-//   }
-// }

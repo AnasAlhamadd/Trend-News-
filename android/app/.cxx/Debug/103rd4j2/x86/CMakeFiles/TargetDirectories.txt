@@ -1,0 +1,2 @@
+C:/Users/awata/StudioProjects/untitled4/android/app/.cxx/Debug/103rd4j2/x86/CMakeFiles/edit_cache.dir
+C:/Users/awata/StudioProjects/untitled4/android/app/.cxx/Debug/103rd4j2/x86/CMakeFiles/rebuild_cache.dir

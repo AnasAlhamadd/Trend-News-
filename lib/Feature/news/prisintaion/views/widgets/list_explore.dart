@@ -6,8 +6,34 @@ import 'package:untitled4/Feature/news/prisintaion/views/widgets/custom_items_ne
 import 'package:untitled4/core/utils/app_router.dart';
 import 'package:untitled4/core/widgets/custom_loading_explore_shimmer.dart';
 
-class ListExplore extends StatelessWidget {
+class ListExplore extends StatefulWidget {
   const ListExplore({super.key});
+
+  @override
+  State<ListExplore> createState() => _ListExploreState();
+}
+
+class _ListExploreState extends State<ListExplore> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 200) {
+      context.read<ExploreCubit>().getExploreNews();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +48,32 @@ class ListExplore extends StatelessWidget {
             ),
           );
         } else if (state is ExploreSuccess) {
-          return SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => GestureDetector(
-                onTap: () {
-                  GoRouter.of(context).push(
-                    AppRouter.kNewsDetailes,
-                    extra: state.listnewsModels[0].articles![index],
+          final articles = state.listNewsData[0].articles ?? [];
+
+          return SliverToBoxAdapter(
+            child: ListView.builder(
+              shrinkWrap: true,
+              controller: _scrollController,
+              itemCount: articles.length + 1,
+              itemBuilder: (context, index) {
+                if (index < articles.length) {
+                  return GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push(
+                        AppRouter.kNewsDetailes,
+                        extra: articles[index],
+                      );
+                    },
+                    child: CustomItemsNewsExplore(
+                      article: articles[index],
+                    ),
                   );
-                },
-                child: CustomItemsNewsExplore(
-                  article: state.listnewsModels[0].articles![index],
-                ),
-              ),
-              childCount: state.listnewsModels[0].articles!.length,
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           );
         } else {

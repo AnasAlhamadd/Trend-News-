@@ -8,20 +8,46 @@ part 'explore_state.dart';
 class ExploreCubit extends Cubit<ExploreState> {
   ExploreCubit(this.newsRepoImp) : super(ExploreInitial());
   final NewsRepoImp newsRepoImp;
-  Future<void> getExploreNews() async {
-    emit(ExploreLoading());
-    var data = await newsRepoImp.featchExploreNews();
-    data.fold(
-        (faliure) => emit(
-              ExploreFailure(
-                faliure.errMesage,
-              ),
-            ), (listRecommended) {
-      emit(
-        ExploreSuccess(
-          listRecommended,
-        ),
-      );
-    });
+  int _page = 1;
+  final int _pageSize = 20;
+  bool _isLoadingMore = false;
+  bool _isLastPage = false;
+  List<NewsModels> _allNews = [];
+
+  Future<void> getExploreNews({bool isRefresh = false}) async {
+    if (_isLastPage || _isLoadingMore) return;
+
+    if (isRefresh) {
+      _page = 1;
+      _isLastPage = false;
+      _allNews.clear();
+      emit(ExploreLoading());
+    } else if (_page == 1) {
+      emit(ExploreLoading());
+    } else {
+      _isLoadingMore = true;
+      emit(ExploreSuccess(_allNews, isLoadingMore: true));
+    }
+
+    final result = await newsRepoImp.featchExploreNews(
+      page: _page,
+      pageSize: _pageSize,
+    );
+
+    result.fold(
+      (failure) {
+        emit(ExploreFailure(failure.errMesage));
+        _isLoadingMore = false;
+      },
+      (newsList) {
+        if (newsList.length < _pageSize) _isLastPage = true;
+
+        _allNews.addAll(newsList);
+        _page++;
+        _isLoadingMore = false;
+
+        emit(ExploreSuccess(_allNews, isLoadingMore: false));
+      },
+    );
   }
 }

@@ -1,0 +1,2 @@
+C:/Users/awata/StudioProjects/untitled4/android/app/.cxx/Debug/6e96n6xu/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/awata/StudioProjects/untitled4/android/app/.cxx/Debug/6e96n6xu/armeabi-v7a/CMakeFiles/rebuild_cache.dir

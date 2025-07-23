@@ -10,12 +10,12 @@ class SavedNewsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return const CustomScrollView(
       slivers: [
-        SliverList(
-            delegate: SliverChildBuilderDelegate(
-                (context, index) => const CustomItemsSaved(),
-                childCount: 10))
+        // SliverList(
+        //     delegate: SliverChildBuilderDelegate(
+        //         (context, index) => const CustomItemsSaved(),
+        //         childCount: 10))
       ],
     );
   }
@@ -66,7 +66,7 @@ class CustomItemsSaved extends StatelessWidget {
                     ),
                   ),
                 ),
-                CustomSourceNews(source: 'News Channel'),
+                const CustomSourceNews(source: 'News Channel'),
                 const SizedBox(
                   height: 3.0,
                 ),

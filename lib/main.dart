@@ -32,6 +32,7 @@ class TrendNewsApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
+        theme: ThemeData(useMaterial3: false),
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
       ),
