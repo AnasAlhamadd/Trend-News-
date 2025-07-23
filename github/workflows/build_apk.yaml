@@ -1,23 +1,22 @@
-# .github/workflows/build_apk.yml
 name: Build Flutter APK
 
 on:
   push:
-    branches: [ main ] # أو أي فرع تعمل عليه
-  workflow_dispatch: # لتشغيلها يدويًا من GitHub
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧾 Checkout repository
+      - name: 🧾 Checkout source
         uses: actions/checkout@v3
 
       - name: 💻 Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.3' # تأكد من توافقه مع نسختك
+          flutter-version: '3.19.3'
           channel: 'stable'
 
       - name: 📦 Install dependencies
@@ -29,8 +28,8 @@ jobs:
       - name: 🛠️ Build release APK
         run: flutter build apk --release
 
-      - name: 📤 Upload APK artifact
-        uses: actions/upload-artifact@v3
+      - name: 📤 Upload APK
+        uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
