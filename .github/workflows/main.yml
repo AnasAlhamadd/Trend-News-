@@ -1,0 +1,35 @@
+name: Build Flutter APK
+
+on:
+  push:
+    branches: [ main ] # أو أي فرع تعمل عليه
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧾 Checkout source
+        uses: actions/checkout@v3
+
+      - name: 💻 Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.3' # أو نسختك الفعلية
+          channel: 'stable'
+
+      - name: 📦 Install dependencies
+        run: flutter pub get
+
+      - name: 🧹 Clean project
+        run: flutter clean
+
+      - name: 🛠️ Build release APK
+        run: flutter build apk --release
+
+      - name: 📤 Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
