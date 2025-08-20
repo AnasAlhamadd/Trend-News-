@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 
 class ApiServices {
   final Dio _dio;
+  // final Dio _dio;
 
   ApiServices(this._dio);
 
